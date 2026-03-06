@@ -1,65 +1,163 @@
-import Image from "next/image";
+'use client'
+
+import Link from 'next/link'
+import { motion } from 'motion/react'
+
+const FEATURES = [
+  {
+    href: '/dictionary',
+    icon: '\uD83D\uDCD6',
+    title: 'Slownik animacji',
+    desc: '20 typow animacji z tokenami i podgladem',
+  },
+  {
+    href: '/prompt-engine',
+    icon: '\u26A1',
+    title: 'Prompt Engine',
+    desc: 'NLP parser i frozen prompt generator',
+  },
+  {
+    href: '/library',
+    icon: '\uD83E\uDDE9',
+    title: 'Biblioteka komponentow',
+    desc: '20 production-ready React components',
+  },
+  {
+    href: '/builder',
+    icon: '\uD83C\uDFD7\uFE0F',
+    title: 'Block Builder',
+    desc: 'Drag & drop page builder z eksportem',
+  },
+]
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12 },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: [0.19, 1, 0.22, 1] as [number, number, number, number] },
+  },
+}
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <div
+      style={{
+        minHeight: 'calc(100vh - 64px)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '4rem 1.5rem',
+      }}
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
+        style={{ textAlign: 'center', marginBottom: '3rem' }}
+      >
+        <h1
+          style={{
+            fontFamily: 'var(--font-display)',
+            fontWeight: 800,
+            fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+            color: 'var(--color-accent)',
+            lineHeight: 1.1,
+            marginBottom: '1rem',
+          }}
+        >
+          Animation Craft Studio
+        </h1>
+        <p
+          style={{
+            fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+            color: 'var(--color-text-secondary)',
+            maxWidth: 520,
+            margin: '0 auto',
+          }}
+        >
+          Narzedzie do budowania animowanych stron klasy award-level
+        </p>
+      </motion.div>
+
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+          gap: '1rem',
+          maxWidth: 640,
+          width: '100%',
+        }}
+      >
+        {FEATURES.map((f) => (
+          <motion.div key={f.href} variants={itemVariants}>
+            <Link
+              href={f.href}
+              style={{
+                display: 'block',
+                padding: '1.5rem',
+                borderRadius: 12,
+                border: '1px solid var(--color-border)',
+                background: 'var(--color-surface)',
+                textDecoration: 'none',
+                transition: 'border-color 0.2s ease, transform 0.2s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'var(--color-accent)'
+                e.currentTarget.style.transform = 'translateY(-2px)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'var(--color-border)'
+                e.currentTarget.style.transform = 'translateY(0)'
+              }}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+              <span style={{ fontSize: '1.5rem' }}>{f.icon}</span>
+              <h2
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontWeight: 700,
+                  fontSize: '1rem',
+                  color: 'var(--color-text-primary)',
+                  marginTop: 8,
+                  marginBottom: 4,
+                }}
+              >
+                {f.title}
+              </h2>
+              <p
+                style={{
+                  fontSize: '0.8125rem',
+                  color: 'var(--color-text-secondary)',
+                  margin: 0,
+                }}
+              >
+                {f.desc}
+              </p>
+              <span
+                style={{
+                  display: 'inline-block',
+                  marginTop: 12,
+                  fontSize: '0.75rem',
+                  color: 'var(--color-accent)',
+                }}
+              >
+                Otwórz →
+              </span>
+            </Link>
+          </motion.div>
+        ))}
+      </motion.div>
     </div>
-  );
+  )
 }
