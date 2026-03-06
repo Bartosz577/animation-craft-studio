@@ -183,12 +183,17 @@ function PromptSection({
 
   return (
     <div className="overflow-hidden rounded-lg border" style={{ borderColor: 'var(--color-border)' }}>
-      <button
-        onClick={() => setExpanded(!expanded)}
-        className="flex w-full items-center justify-between px-4 py-2.5 text-left"
+      <div
         style={{ background: 'var(--color-surface)' }}
+        className="flex w-full items-center justify-between px-4 py-2.5"
       >
-        <div className="flex items-center gap-2">
+        <div
+          onClick={() => setExpanded(!expanded)}
+          className="flex flex-1 cursor-pointer items-center gap-2"
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setExpanded(!expanded) }}
+        >
           <span
             className="inline-block h-4 w-1 rounded-full"
             style={{ background: color }}
@@ -199,17 +204,17 @@ function PromptSection({
           >
             {title}
           </span>
-        </div>
-        <div className="flex items-center gap-2">
-          <CopyBtn text={content} label="Kopiuj" sectionId={sectionId} />
           <span
-            className="text-xs"
+            className="ml-auto text-xs"
             style={{ color: 'var(--color-text-secondary)' }}
           >
             {expanded ? '−' : '+'}
           </span>
         </div>
-      </button>
+        <div className="ml-2 flex items-center">
+          <CopyBtn text={content} label="Kopiuj" sectionId={sectionId} />
+        </div>
+      </div>
       <AnimatePresence initial={false}>
         {expanded && (
           <motion.div

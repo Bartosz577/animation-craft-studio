@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { motion } from 'motion/react'
 import Link from 'next/link'
 import type { AnimationEntry } from '@/lib/dictionary'
@@ -80,11 +80,13 @@ interface ComponentCardProps {
 }
 
 export default function ComponentCard({ entry }: ComponentCardProps) {
-  const [previewKey, setPreviewKey] = useState(0)
+  const [playKey, setPlayKey] = useState(0)
   const categoryColor = getCategoryColor(entry.category)
 
-  const handleMouseEnter = useCallback(() => {
-    setPreviewKey((k) => k + 1)
+  // Auto-replay loop every 3s to keep card previews alive
+  useEffect(() => {
+    const iv = setInterval(() => setPlayKey((k) => k + 1), 3000)
+    return () => clearInterval(iv)
   }, [])
 
   const handleCopyCode = useCallback(() => {
@@ -119,7 +121,6 @@ export default function ComponentCard({ entry }: ComponentCardProps) {
     >
       {/* Preview area */}
       <div
-        onMouseEnter={handleMouseEnter}
         style={{
           height: '12rem',
           overflow: 'hidden',
@@ -128,9 +129,10 @@ export default function ComponentCard({ entry }: ComponentCardProps) {
         }}
       >
         <ComponentPreview
-          key={previewKey}
+          key={playKey}
           componentId={entry.id}
           propValues={DEFAULT_PROPS[entry.id] ?? {}}
+          mode="card"
         />
       </div>
 
@@ -156,7 +158,6 @@ export default function ComponentCard({ entry }: ComponentCardProps) {
             marginTop: '0.5rem',
           }}
         >
-          {/* Category badge */}
           <span
             style={{
               display: 'inline-block',
@@ -172,7 +173,6 @@ export default function ComponentCard({ entry }: ComponentCardProps) {
             {entry.category}
           </span>
 
-          {/* Performance dot */}
           <span
             title={`Performance: ${entry.config.performance}`}
             style={{

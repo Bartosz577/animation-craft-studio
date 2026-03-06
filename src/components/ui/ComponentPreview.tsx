@@ -26,6 +26,7 @@ interface ComponentPreviewProps {
   componentId: string
   propValues: Record<string, unknown>
   className?: string
+  mode?: 'full' | 'card'
 }
 
 class ErrorBoundary extends React.Component<
@@ -431,19 +432,24 @@ export default function ComponentPreview({
   componentId,
   propValues,
   className,
+  mode = 'full',
 }: ComponentPreviewProps) {
+  const isCard = mode === 'card'
   return (
     <div
       className={className}
       style={{
-        background: 'var(--color-surface, #18181b)',
-        borderRadius: '0.75rem',
-        minHeight: '200px',
+        background: isCard ? 'transparent' : 'var(--color-surface, #18181b)',
+        borderRadius: isCard ? 0 : '0.75rem',
+        minHeight: isCard ? undefined : '200px',
+        height: isCard ? '100%' : undefined,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         overflow: 'hidden',
         position: 'relative',
+        transform: isCard ? 'scale(0.7)' : undefined,
+        transformOrigin: 'center center',
       }}
     >
       <ErrorBoundary>
