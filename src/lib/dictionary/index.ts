@@ -12,3 +12,5 @@ export {
   AnimationEntrySchema,
   validateEntry,
 } from './zod-schemas'
+
+export { categoryColors, getCategoryColor } from './category-colors'
