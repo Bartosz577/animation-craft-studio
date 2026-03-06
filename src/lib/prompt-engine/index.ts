@@ -1,2 +1,6 @@
 export type { ParsedIntent, KeywordMap } from './types'
 export { parseIntent } from './parser'
+export type { Match } from './slot-mapper'
+export { findMatches } from './slot-mapper'
+export type { UserContext, FrozenPrompt } from './prompt-builder'
+export { buildFrozenPrompt, validateFrozenPrompt } from './prompt-builder'
