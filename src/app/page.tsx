@@ -457,7 +457,7 @@ export default function Home() {
             position: 'relative',
             zIndex: 10,
             textAlign: 'center',
-            padding: '0 1.5rem',
+            padding: '80px 1.5rem 0',
             maxWidth: 900,
             margin: '0 auto',
           }}
@@ -486,13 +486,41 @@ export default function Home() {
             style={{
               fontFamily: 'var(--font-display)',
               fontWeight: 800,
-              fontSize: 'clamp(3rem, 10vw, 7rem)',
               lineHeight: 1,
               margin: 0,
             }}
           >
-            <SplitText text="Animation Craft" delay={0.3} />
-            <SplitText text="Studio" delay={0.7} accentWord="Studio" />
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.3,
+                duration: 0.7,
+                ease: [0.19, 1, 0.22, 1] as [number, number, number, number],
+              }}
+              style={{
+                fontSize: 'clamp(2.5rem, 8vw, 6rem)',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              Animation Craft
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.5,
+                duration: 0.7,
+                ease: [0.19, 1, 0.22, 1] as [number, number, number, number],
+              }}
+              style={{
+                fontSize: 'clamp(3rem, 10vw, 7rem)',
+                whiteSpace: 'nowrap',
+                color: 'var(--color-accent)',
+              }}
+            >
+              Studio
+            </motion.div>
           </h1>
 
           {/* Subheadline */}
@@ -623,7 +651,7 @@ export default function Home() {
                 style={{
                   fontFamily: 'var(--font-display)',
                   fontWeight: 800,
-                  fontSize: '2.5rem',
+                  fontSize: 'clamp(2.5rem, 5vw, 4rem)',
                   color: 'var(--color-accent)',
                 }}
               >
@@ -631,9 +659,9 @@ export default function Home() {
               </div>
               <div
                 style={{
-                  fontSize: '0.8125rem',
+                  fontSize: '0.875rem',
                   color: 'var(--color-text-secondary)',
-                  marginTop: 4,
+                  marginTop: 8,
                 }}
               >
                 {stat.label}
@@ -663,7 +691,7 @@ export default function Home() {
               style={{
                 fontFamily: 'var(--font-display)',
                 fontWeight: 800,
-                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontSize: 'clamp(2rem, 5vw, 4rem)',
                 color: 'var(--color-text-primary)',
                 marginTop: 12,
                 lineHeight: 1.1,
@@ -828,7 +856,7 @@ export default function Home() {
               style={{
                 fontFamily: 'var(--font-display)',
                 fontWeight: 800,
-                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontSize: 'clamp(2rem, 5vw, 4rem)',
                 color: 'var(--color-text-primary)',
                 marginTop: 12,
                 lineHeight: 1.1,
@@ -891,7 +919,7 @@ export default function Home() {
             style={{
               fontFamily: 'var(--font-display)',
               fontWeight: 800,
-              fontSize: 'clamp(2rem, 4vw, 3rem)',
+              fontSize: 'clamp(2rem, 5vw, 4rem)',
               color: 'var(--color-text-primary)',
               marginTop: 12,
               lineHeight: 1.1,
@@ -1010,7 +1038,7 @@ export default function Home() {
               style={{
                 fontFamily: 'var(--font-display)',
                 fontWeight: 800,
-                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontSize: 'clamp(2rem, 5vw, 4rem)',
                 color: 'var(--color-text-primary)',
                 marginTop: 12,
                 lineHeight: 1.1,
