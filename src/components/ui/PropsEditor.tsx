@@ -19,7 +19,7 @@ type PropDef = {
 /*  Component props metadata — maps componentId → editable props       */
 /* ------------------------------------------------------------------ */
 
-const COMPONENT_PROPS_META: Record<string, Record<string, PropDef>> = {
+export const COMPONENT_PROPS_META: Record<string, Record<string, PropDef>> = {
   'hero-sequence': {
     delay: { type: 'number', label: 'Opóźnienie (s)', min: 0, max: 3, step: 0.1 },
   },
