@@ -17,8 +17,8 @@ animation code components and AI-ready frozen prompts.
 - Tailwind CSS v4 (CSS-first, no tailwind.config.js)
 - Motion v12 (primary animation library for UI and components)
 - GSAP 3 + ScrollTrigger (complex timelines, scroll-driven, text splitting)
-- Lenis 2 (smooth scroll, integrates with GSAP ticker)
-- React Three Fiber 8 + Drei + Postprocessing (3D/WebGL)
+- Lenis 1.3 (smooth scroll, integrates with GSAP ticker)
+- React Three Fiber 9 + Drei + Postprocessing (3D/WebGL — v9 required for React 19 compat)
 - Zustand 5 (global state)
 - Zod (schema validation)
 - Storybook 8 (component isolation)
@@ -89,3 +89,4 @@ Update this section as you progress:
 - Motion is MIT licensed — safe for all uses
 - WebGL components have high performance cost — always badge them clearly
 - Target browsers: Chrome 120+, Firefox 121+, Safari 17+
+- .npmrc has legacy-peer-deps=true because Storybook 8 hasn't declared Next.js 16 in peer deps yet — don't remove it
