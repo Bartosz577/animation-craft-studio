@@ -478,7 +478,7 @@ export default function Home() {
               marginBottom: 32,
             }}
           >
-            Narzedzie dla tworcow stron klasy Awwwards
+            Narzędzie dla twórców stron klasy Awwwards
           </motion.div>
 
           {/* Headlines */}
@@ -488,6 +488,10 @@ export default function Home() {
               fontWeight: 800,
               lineHeight: 1,
               margin: 0,
+              width: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
             }}
           >
             <motion.div
@@ -539,7 +543,7 @@ export default function Home() {
               margin: '24px auto 0',
             }}
           >
-            Transformuj opisy animacji na gotowy kod — identyczny w kazdym chatbocie AI
+            Transformuj opisy animacji na gotowy kod — identyczny w każdym chatbocie AI
           </motion.p>
 
           {/* CTA buttons */}
@@ -569,7 +573,7 @@ export default function Home() {
                   textDecoration: 'none',
                 }}
               >
-                Otworz Prompt Engine &rarr;
+                Otwórz Prompt Engine &rarr;
               </Link>
             </motion.div>
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
@@ -592,7 +596,7 @@ export default function Home() {
                   (e.currentTarget.style.borderColor = 'var(--color-border)')
                 }
               >
-                Zobacz biblioteke komponentow
+                Zobacz bibliotekę komponentów
               </Link>
             </motion.div>
           </motion.div>
@@ -641,10 +645,10 @@ export default function Home() {
           }}
         >
           {[
-            { target: 20, suffix: '', label: 'gotowych komponentow' },
-            { target: 9, suffix: '', label: 'tokenow animacji' },
-            { target: 4, suffix: '', label: 'zintegrowane moduly' },
-            { target: 95, suffix: '%', label: 'zgodnosc Claude Sonnet 4.6' },
+            { target: 20, suffix: '', label: 'gotowych komponentów' },
+            { target: 9, suffix: '', label: 'tokenów animacji' },
+            { target: 4, suffix: '', label: 'zintegrowane moduły' },
+            { target: 95, suffix: '%', label: 'zgodność Claude Sonnet 4.6' },
           ].map((stat, i) => (
             <div key={i}>
               <div
@@ -672,7 +676,7 @@ export default function Home() {
       </Section>
 
       {/* ═══════════ SECTION 3 — DICTIONARY FEATURE ═══════════ */}
-      <Section style={{ padding: '128px 24px' }}>
+      <Section style={{ padding: '96px 24px' }}>
         <div className="mx-auto max-w-[1200px] grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-16 px-6">
           {/* Left text */}
           <div>
@@ -685,7 +689,7 @@ export default function Home() {
                 textTransform: 'uppercase',
               }}
             >
-              Modul 01
+              Moduł 01
             </span>
             <h2
               style={{
@@ -697,7 +701,7 @@ export default function Home() {
                 lineHeight: 1.1,
               }}
             >
-              Slownik
+              Słownik
               <br />
               Animacji
             </h2>
@@ -709,14 +713,14 @@ export default function Home() {
                 lineHeight: 1.6,
               }}
             >
-              Encyklopedia wizualna wszystkich efektow animacyjnych z pelnymi tokenami,
-              podgladem na zywo i fragmentami promptow.
+              Encyklopedia wizualna wszystkich efektów animacyjnych z pełnymi tokenami,
+              podglądem na żywo i fragmentami promptów.
             </p>
             <FeatureList
               items={[
-                '20 gotowych wpisow z podgladem na zywo',
-                'Filtrowanie po kategorii, bibliotece i wydajnosci',
-                'Kazdy wpis z fragmentem gotowego prompta',
+                '20 gotowych wpisów z podglądem na żywo',
+                'Filtrowanie po kategorii, bibliotece i wydajności',
+                'Każdy wpis z fragmentem gotowego prompta',
               ]}
             />
             <Link
@@ -730,7 +734,7 @@ export default function Home() {
                 fontWeight: 500,
               }}
             >
-              Otworz slownik &rarr;
+              Otwórz słownik &rarr;
             </Link>
           </div>
 
@@ -772,7 +776,7 @@ export default function Home() {
       <Section
         bg="var(--color-surface)"
         style={{
-          padding: '128px 24px',
+          padding: '96px 24px',
           borderTop: '1px solid var(--color-border)',
           borderBottom: '1px solid var(--color-border)',
         }}
@@ -809,7 +813,7 @@ export default function Home() {
                 }}
               >
                 <TypewriterText
-                  text="naglowek wjezdza od dolu litera po literze"
+                  text="nagłówek wjeżdża od dołu litera po literze"
                   speed={40}
                 />
               </div>
@@ -850,7 +854,7 @@ export default function Home() {
                 textTransform: 'uppercase',
               }}
             >
-              Modul 02
+              Moduł 02
             </span>
             <h2
               style={{
@@ -874,14 +878,14 @@ export default function Home() {
                 lineHeight: 1.6,
               }}
             >
-              Opisz animacje swoimi slowami — NLP parser zamieni je na ustrukturyzowane
+              Opisz animację swoimi słowami — NLP parser zamieni je na ustrukturyzowane
               tokeny i wygeneruje frozen prompt gotowy do wklejenia w dowolny chatbot AI.
             </p>
             <FeatureList
               items={[
                 'NLP parser rozpoznaje elementy, typy i parametry',
-                'Frozen prompts zapewniaja powtarzalnosc wynikow',
-                'Eksport do schowka jednym kliknieciem',
+                'Frozen prompts zapewniają powtarzalność wyników',
+                'Eksport do schowka jednym kliknięciem',
               ]}
             />
             <Link
@@ -895,14 +899,14 @@ export default function Home() {
                 fontWeight: 500,
               }}
             >
-              Otworz Prompt Engine &rarr;
+              Otwórz Prompt Engine &rarr;
             </Link>
           </div>
         </div>
       </Section>
 
       {/* ═══════════ SECTION 5 — LIBRARY FEATURE ═══════════ */}
-      <Section style={{ padding: '128px 24px' }}>
+      <Section style={{ padding: '96px 24px' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', textAlign: 'center' }}>
           <span
             style={{
@@ -913,7 +917,7 @@ export default function Home() {
               textTransform: 'uppercase',
             }}
           >
-            Modul 03
+            Moduł 03
           </span>
           <h2
             style={{
@@ -925,7 +929,7 @@ export default function Home() {
               lineHeight: 1.1,
             }}
           >
-            Biblioteka Komponentow
+            Biblioteka Komponentów
           </h2>
           <p
             style={{
@@ -937,8 +941,8 @@ export default function Home() {
               margin: '16px auto 0',
             }}
           >
-            20 production-ready komponentow React z podgladem na zywo, kodem zrodlowym
-            i frozen promptem do natychmiastowego uzycia.
+            20 production-ready komponentów React z podglądem na żywo, kodem źródłowym
+            i frozen promptem do natychmiastowego użycia.
           </p>
         </div>
 
@@ -1006,7 +1010,7 @@ export default function Home() {
               fontWeight: 500,
             }}
           >
-            Przegladaj wszystkie komponenty &rarr;
+            Przeglądaj wszystkie komponenty &rarr;
           </Link>
         </div>
       </Section>
@@ -1015,7 +1019,7 @@ export default function Home() {
       <Section
         bg="var(--color-surface)"
         style={{
-          padding: '128px 24px',
+          padding: '96px 24px',
           borderTop: '1px solid var(--color-border)',
           borderBottom: '1px solid var(--color-border)',
         }}
@@ -1032,7 +1036,7 @@ export default function Home() {
                 textTransform: 'uppercase',
               }}
             >
-              Modul 04
+              Moduł 04
             </span>
             <h2
               style={{
@@ -1056,12 +1060,12 @@ export default function Home() {
                 lineHeight: 1.6,
               }}
             >
-              Przeciagaj gotowe bloki animacyjne, ukladaj je w sekcje i eksportuj
+              Przeciągaj gotowe bloki animacyjne, układaj je w sekcje i eksportuj
               kompletny kod strony — bez pisania ani jednej linii.
             </p>
             <FeatureList
               items={[
-                'Drag & drop interface z podgladem na zywo',
+                'Drag & drop interface z podglądem na żywo',
                 'Gotowe bloki: hero, features, stats, CTA',
                 'Eksport do czystego kodu React/Next.js',
               ]}
@@ -1077,7 +1081,7 @@ export default function Home() {
                 fontWeight: 500,
               }}
             >
-              Otworz Builder &rarr;
+              Otwórz Builder &rarr;
             </Link>
           </div>
 
@@ -1125,7 +1129,7 @@ export default function Home() {
       </Section>
 
       {/* ═══════════ SECTION 7 — FINAL CTA ═══════════ */}
-      <Section style={{ padding: '160px 24px' }}>
+      <Section style={{ padding: '96px 24px' }}>
         <div style={{ maxWidth: 640, margin: '0 auto', textAlign: 'center' }}>
           <GlowBorder glowColor="var(--color-accent)" borderRadius="16px">
             <div style={{ padding: '48px 32px' }}>
@@ -1138,7 +1142,7 @@ export default function Home() {
                   margin: 0,
                 }}
               >
-                Zacznij budowac dzis
+                Zacznij budować dziś
               </h2>
               <p
                 style={{
@@ -1147,7 +1151,7 @@ export default function Home() {
                   fontSize: '1rem',
                 }}
               >
-                Darmowe narzedzie. Zero rejestracji.
+                Darmowe narzędzie. Zero rejestracji.
               </p>
               <div
                 style={{
@@ -1172,7 +1176,7 @@ export default function Home() {
                       textDecoration: 'none',
                     }}
                   >
-                    Otworz Prompt Engine &rarr;
+                    Otwórz Prompt Engine &rarr;
                   </Link>
                 </motion.div>
                 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
@@ -1188,7 +1192,7 @@ export default function Home() {
                       textDecoration: 'none',
                     }}
                   >
-                    Biblioteka komponentow
+                    Biblioteka komponentów
                   </Link>
                 </motion.div>
               </div>
@@ -1199,7 +1203,7 @@ export default function Home() {
                   fontSize: '0.75rem',
                 }}
               >
-                Dziala z Claude, ChatGPT, Gemini, Cursor AI
+                Działa z Claude, ChatGPT, Gemini, Cursor AI
               </p>
             </div>
           </GlowBorder>
@@ -1208,7 +1212,7 @@ export default function Home() {
 
       {/* ═══════════ FOOTER ═══════════ */}
       <footer
-        style={{ borderTop: '1px solid var(--color-border)', padding: '64px 24px' }}
+        style={{ borderTop: '1px solid var(--color-border)', padding: '48px 24px' }}
       >
         <div
           style={{
