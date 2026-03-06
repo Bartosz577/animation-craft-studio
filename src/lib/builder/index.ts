@@ -1,0 +1,7 @@
+export { detectConflicts } from './conflict-detector'
+export type { Conflict, ConflictSeverity } from './conflict-detector'
+export { DEFAULT_PROPS } from './component-defaults'
+export { exportToNextJS } from './exporters/code-exporter'
+export { exportMasterPrompt, COMPONENT_NAME_MAP } from './exporters/prompt-exporter'
+export { exportToFigma } from './exporters/figma-exporter'
+export type { FigmaFrame, FigmaLayer } from './exporters/figma-exporter'

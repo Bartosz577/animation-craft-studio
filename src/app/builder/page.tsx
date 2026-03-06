@@ -24,6 +24,9 @@ import { getCategoryColor } from '@/lib/dictionary/category-colors'
 import ComponentPreview from '@/components/ui/ComponentPreview'
 import PropsEditor from '@/components/ui/PropsEditor'
 import { showToast } from '@/components/ui/Toast'
+import { exportToNextJS } from '@/lib/builder/exporters/code-exporter'
+import { exportMasterPrompt } from '@/lib/builder/exporters/prompt-exporter'
+import { exportToFigma } from '@/lib/builder/exporters/figma-exporter'
 
 import type { Block } from '@/lib/stores/builder-store'
 
@@ -264,6 +267,7 @@ export default function BuilderPage() {
   const [showTimeline, setShowTimeline] = useState(false)
   const [dragActiveId, setDragActiveId] = useState<string | null>(null)
   const [showExportMenu, setShowExportMenu] = useState(false)
+  const [isExportingPrompt, setIsExportingPrompt] = useState(false)
 
   const conflicts = useMemo(
     () => detectConflicts(blocks, allAnimations),
@@ -672,7 +676,7 @@ export default function BuilderPage() {
                       top: '100%',
                       right: 0,
                       marginTop: '4px',
-                      minWidth: '180px',
+                      minWidth: '200px',
                       background: 'var(--color-surface-elevated)',
                       border: '1px solid var(--color-border)',
                       borderRadius: '8px',
@@ -681,16 +685,58 @@ export default function BuilderPage() {
                     }}
                   >
                     {[
-                      'Eksportuj JSON',
-                      'Eksportuj jako kod',
-                      'Kopiuj konfigurację',
-                    ].map((label) => (
+                      {
+                        label: 'Eksportuj kod',
+                        onClick: () => {
+                          const code = exportToNextJS(blocks, globalTheme)
+                          const blob = new Blob([code], { type: 'text/plain' })
+                          const url = URL.createObjectURL(blob)
+                          const a = document.createElement('a')
+                          a.href = url
+                          a.download = 'page.tsx'
+                          a.click()
+                          URL.revokeObjectURL(url)
+                          showToast('page.tsx pobrany ✓')
+                        },
+                      },
+                      {
+                        label: isExportingPrompt ? 'Generowanie...' : 'Eksportuj prompt',
+                        onClick: async () => {
+                          setIsExportingPrompt(true)
+                          try {
+                            const prompt = await exportMasterPrompt(blocks, globalTheme)
+                            await navigator.clipboard.writeText(prompt.fullPrompt)
+                            showToast('Master prompt skopiowany ✓')
+                          } finally {
+                            setIsExportingPrompt(false)
+                          }
+                        },
+                      },
+                      {
+                        label: 'Eksportuj Figma',
+                        onClick: () => {
+                          const figma = exportToFigma(blocks)
+                          const blob = new Blob(
+                            [JSON.stringify(figma, null, 2)],
+                            { type: 'application/json' },
+                          )
+                          const url = URL.createObjectURL(blob)
+                          const a = document.createElement('a')
+                          a.href = url
+                          a.download = 'animation-craft-studio-layout.json'
+                          a.click()
+                          URL.revokeObjectURL(url)
+                          showToast('Figma JSON pobrany ✓')
+                        },
+                      },
+                    ].map((item) => (
                       <button
-                        key={label}
+                        key={item.label}
                         onClick={() => {
-                          showToast('Dostępne wkrótce!')
+                          item.onClick()
                           setShowExportMenu(false)
                         }}
+                        disabled={isExportingPrompt && item.label.includes('prompt')}
                         style={{
                           display: 'block',
                           width: '100%',
@@ -702,6 +748,7 @@ export default function BuilderPage() {
                           cursor: 'pointer',
                           borderRadius: '6px',
                           fontSize: '12px',
+                          opacity: isExportingPrompt && item.label.includes('Generowanie') ? 0.5 : 1,
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.background =
@@ -711,7 +758,7 @@ export default function BuilderPage() {
                           e.currentTarget.style.background = 'transparent'
                         }}
                       >
-                        {label}
+                        {item.label}
                       </button>
                     ))}
                   </div>
